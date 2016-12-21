@@ -12,12 +12,10 @@ app.get('/', function (req, res) {
       
       var resObj = {
           "ipaddress": ipaddress,
-          'language': language,
-          'software': software
+          'language': language.substr(0,language.indexOf(',',1)),
+          'software': software.substr(software.indexOf('(',1)+1,software.indexOf(')',0)-software.indexOf('(',0)-1)
           }
-  //res.send(req.headers['x-forwarded-for'])
 
-  
   res.send(resObj)
   console.log(resObj)
   
